@@ -224,6 +224,11 @@ are also included:
 - ``pep8-naming``: Ensure functions, classes, and variables are named with correct casing.
 - ``flake8-quotes``: Ensure that ``' '`` style string quoting is used consistently.
 - ``flake8-import-order``: Ensure consistency in the way imports are grouped and sorted.
+- ``mccabe``: code complexity checker
+
+`Pylint <http://pylint.pycqa.org/>`_ is complementary to ``pep8`` as
+it also tries to infer programming errors. More pedantic than ``pep8``
+and the occasional ``# pylint:disable:<warning>`` is warranted.
 
 Generated Documentation
 ^^^^^^^^^^^^^^^^^^^^^^^
