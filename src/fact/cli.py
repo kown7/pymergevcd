@@ -11,8 +11,9 @@ from fact.lib import factorial
 
 def parse_args() -> argparse.Namespace:
     """Parse user command line arguments."""
-    parser = argparse.ArgumentParser(description='Compute factorial of a given input.',
-                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description='Compute factorial of a given input.',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-n',
                         type=int,
                         required=True,
@@ -21,7 +22,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> ExitStatus:
-    """Accept arguments from the user, compute the factorial, and display the results."""
+    """Parse files into one VCD."""
     colorama.init(autoreset=True, strip=False)
     args = parse_args()
 
