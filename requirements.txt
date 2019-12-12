@@ -6,3 +6,4 @@
 #
 colorama==0.4.3           # via -r requirements.in
 exitstatus==1.4.0         # via -r requirements.in
+pyvcd==0.2.1              # via -r requirements.in
