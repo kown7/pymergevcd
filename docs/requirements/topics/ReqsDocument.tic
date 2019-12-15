@@ -1,0 +1,4 @@
+Name: Software Requirements Specification
+Text: This document describes the requirements defined for \emph{pymergevcd}.
+IncludeRequirements: full
+Text: This document describes the \emph{rmtoo} software components tests performed. The nomenclature follows EN50128.

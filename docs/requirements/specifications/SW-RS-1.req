@@ -1,0 +1,11 @@
+Name: VCD Merger
+Topic: ReqsDocument
+Description: Merge multiple files
+Rationale: compare files visually
+Status: not done
+Owner: customers
+Effort estimation: 1
+Invented on: 2019-12-15
+Invented by: default
+Type: requirement
+Solved by: SW-RS-100 SW-RS-110

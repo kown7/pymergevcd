@@ -1,0 +1,10 @@
+Name: Merge-Diff Two Files
+Topic: ReqsDocument
+Description: Merge two VCD files with the second as a xor-diff relative to the first
+Rationale: Find differences quickly
+Status: not done
+Owner: customers
+Effort estimation: 3
+Invented on: 2019-12-15
+Invented by: default
+Type: requirement

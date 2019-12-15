@@ -1,0 +1,45 @@
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[pdfauthor={Kristoffer Nordstroem},%
+pdftitle={Requirements specification for pymergevcd},%
+pdfsubject={Requirment specification for pymergevcd},%
+pdfkeywords={merge vcd files},%
+pagebackref=true,%
+pdftex, bookmarks=true, colorlinks=true]{hyperref}
+
+\usepackage[a4paper]{geometry}
+\usepackage[titles]{tocloft}
+\usepackage{fancyhdr}
+
+\setlength{\cftsubsecnumwidth}{4em}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[L]{\rightmark}
+\fancyfoot[R]{\thepage}
+\fancyfoot[L]{Version \input{../artifacts/reqs-version.txt}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\parindent0em
+
+\begin{document}
+\thispagestyle{empty}
+
+\title{Software Requirements Specification}
+\author{Kristoffer Nordström}
+\date{\today}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{../artifacts/reqtopics.tex}
+
+\appendix
+\input{../artifacts/tracematrix.tex}
+
+\end{document}

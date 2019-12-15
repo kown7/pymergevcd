@@ -1,0 +1,9 @@
+Name: Merge Multiple Files
+Topic: ReqsDocument
+Description: Merge multiple VCD files into one with a separate namespace for each file.
+Status: not done
+Owner: customers
+Effort estimation: 1
+Invented on: 2019-12-15
+Invented by: default
+Type: requirement
