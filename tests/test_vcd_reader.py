@@ -7,6 +7,7 @@ def test_end_of_file(dummy_vcd_file):
     vcdr = fact.vcd_reader.VcdReader(dummy_vcd_file)
     baseidx = 2
     entries = vcdr.get_list()
+    assert isinstance(entries[0], fact.vcd_reader.VcdDate)
     assert isinstance(entries[1], fact.vcd_reader.VcdTimescale)
     assert isinstance(entries[baseidx], fact.vcd_reader.VcdVariable)
     assert entries[baseidx].name == 'dummyvar'
