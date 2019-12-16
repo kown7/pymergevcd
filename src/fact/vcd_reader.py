@@ -4,13 +4,14 @@ import logging
 from typing import List
 
 import vcd
+from fact.io_manager import AggregatorInterface, EndOfFile  # noqa:I100
 
 
 class VcdElements(abc.ABC):
     """Classes to return from parser"""
 
 
-class VcdEndOfFile(VcdElements):
+class VcdEndOfFile(VcdElements, EndOfFile):
     """Signal end-of-file"""
 
 
@@ -61,7 +62,7 @@ class VcdParserState:
         self.scope = []
         self.parsing_values = False
 
-    def factory(self, line: str) -> VcdElements:
+    def factory(self, line: str) -> VcdElements:  # noqa:C901
         """Convert lines into VcdElements
 
         Default values are currently not supported. Rather they are
@@ -100,7 +101,7 @@ class VcdParserState:
         return None
 
 
-class VcdReader:
+class VcdReader(AggregatorInterface):
     """Parse a VCD file into `VcdElements`"""
     def __init__(self, filename: str = None):
         """Parse given filename"""
@@ -120,6 +121,9 @@ class VcdReader:
             return [VcdEndOfFile()]
         return []
 
+    def namespace(self) -> str:
+        return self._filename
+
     def _parse(self):
         logging.info('Starting parsing')
         state = VcdParserState()
@@ -130,3 +134,10 @@ class VcdReader:
         self._elements.append(VcdEndOfFile())
         self._is_parsed = True
         logging.info('Terminating parsing: %i elements', len(self._elements))
+
+
+def factory(filename: str) -> VcdReader:
+    """Create an `AggregatorInterface` reader depending on filename"""
+    if filename.endswith('.vcd'):
+        return VcdReader(filename)
+    raise ValueError('Unexpected file-ending')
