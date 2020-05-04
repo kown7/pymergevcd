@@ -1,0 +1,10 @@
+Name: IO Manager
+Topic: ReqsDocument
+Description: Manage data streams from reader to transformation engines.
+Status: not done
+Owner: development
+Effort estimation: 1
+Invented on: 2020-05-04
+Invented by: default
+Type: requirement
+Solved by: SW-AS-301 SW-AS-302

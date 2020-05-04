@@ -1,0 +1,9 @@
+Name: Reader Elements
+Topic: ReqsDocument
+Description: Convert VCD files into a stream of \texttt{VcdElements} objects.
+Status: not done
+Owner: development
+Effort estimation: 1
+Invented on: 2020-05-04
+Invented by: default
+Type: requirement

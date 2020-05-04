@@ -1,0 +1,3 @@
+Name: Transformation Engines
+Text: Transform streams of events into a single stream
+IncludeRequirements: full

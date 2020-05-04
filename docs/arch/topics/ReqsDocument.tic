@@ -1,0 +1,3 @@
+Name: Software Design Specification 
+Text: This document describes the architecture for the VCD merge software
+IncludeRequirements: full

@@ -1,0 +1,10 @@
+Name: VCD Reader RA
+Topic: ReqsDocument
+Description: Implements \texttt{AggregatorInterface} interface.
+Status: not done
+Owner: development
+Effort estimation: 1
+Invented on: 2020-05-04
+Invented by: default
+Type: requirement
+Solved by: SW-AS-201 SW-AS-202

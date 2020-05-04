@@ -1,0 +1,61 @@
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[pdfauthor={Kristoffer Nordstroem},%
+pdftitle={Architecture specification for pymergevcd},%
+pdfsubject={Architecture specification for pymergevcd},%
+pdfkeywords={merge vcd files},%
+pagebackref=true,%
+pdftex, bookmarks=true, colorlinks=true]{hyperref}
+
+\usepackage[a4paper]{geometry}
+\usepackage[titles]{tocloft}
+\usepackage{fancyhdr}
+
+\setlength{\cftsubsecnumwidth}{4em}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[L]{\rightmark}
+\fancyfoot[R]{\thepage}
+\fancyfoot[L]{Version \input{../artifacts/reqs-version.txt}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\parindent0em
+
+\begin{document}
+\thispagestyle{empty}
+
+\title{Software Architecture and Design Specification}
+\author{Kristoffer Nordström}
+\date{\today}
+\maketitle
+\newpage
+
+\tableofcontents
+
+\listoffigures
+\listoftables
+
+\newpage
+
+\chapter{Software Architecture Specification}
+
+The architecture in Fig.\ \ref{fig:architecture} defines the building blocks and encapsulates the volatility of the system.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{latex/architecture.png}
+  \caption{The Architecture}
+  \label{fig:architecture}
+\end{figure}
+
+
+\input{../artifacts/reqtopics.tex}
+
+\appendix
+\input{../artifacts/tracematrix.tex}
+
+\end{document}
