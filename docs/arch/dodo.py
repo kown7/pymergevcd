@@ -15,7 +15,7 @@ def task_rmtoo():
         'targets': ['artifacts/reqtopics.tex', 'artifacts/reqs-version.txt',
                     'artifacts/html/',
                     'artifacts/req-graph1.dot', 'artifacts/req-graph2.dot'],
-        'actions': ['rmtoo -j file://Config.json']
+        'actions': ['sltoo -j file://Config.json']
     }
 
 EPS_FILES = [ 'stats_reqs_cnt', 'stats_burndown', 'stats_sprint_burndown']
@@ -27,20 +27,6 @@ def task_pdflatex():
         'targets': ['artifacts/specification.pdf'],
         'actions': [3*'pdflatex -interaction=nonstopmode -output-directory=artifacts latex/specification.tex;']
     }
-
-def task_gnuplot():
-    for filename in [ 'gnuplot_stats_reqs_cnt.inc',
-                      'gnuplot_stats_burndown.inc',
-                      'gnuplot_stats_sprint_burndown.inc' ]:
-        yield {
-            'name': filename,
-            'file_dep': [os.path.join(os.getcwd(),
-                         os.environ['RMTOO_CONTRIB_DIR'],
-                         'rmtoo/contrib/', filename)],
-            'targets': [os.path.join('artifacts', filename.split('.')[0][8:] +
-                        '.eps')],
-            'actions': ['cd artifacts && gnuplot %(dependencies)s']
-        }
 
 def task_eps2pdf():
     for filename in EPS_FILES:
