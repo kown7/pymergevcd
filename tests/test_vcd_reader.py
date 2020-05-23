@@ -1,5 +1,6 @@
 """Test basic VCD file parsing"""
 import pytest
+
 import fact.vcd_reader
 
 

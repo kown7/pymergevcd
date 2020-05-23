@@ -1,6 +1,10 @@
 """Manage input"""
 import abc
-from typing import List, Callable
+from typing import Callable, List
+
+
+class VcdElements(abc.ABC):
+    """Classes to return from parser"""
 
 
 class EndOfFile(abc.ABC):

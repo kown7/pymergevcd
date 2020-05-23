@@ -1,14 +1,11 @@
 """Parse a VCD file into its elements"""
-import abc
 import logging
-from typing import List
+from typing import List, Optional
 
 import vcd
-from fact.io_manager import AggregatorInterface, EndOfFile  # noqa:I100
 
-
-class VcdElements(abc.ABC):
-    """Classes to return from parser"""
+from fact.io_manager import (AggregatorInterface,
+                             EndOfFile, VcdElements)  # noqa:I100
 
 
 class VcdEndOfFile(VcdElements, EndOfFile):
@@ -63,7 +60,7 @@ class VcdParserState:
         self.scope = []
         self.parsing_values = False
 
-    def factory(self, line: str) -> VcdElements:  # noqa:C901
+    def factory(self, line: str) -> Optional[VcdElements]:  # noqa:C901
         """Convert lines into VcdElements
 
         Default values are currently not supported. Rather they are
@@ -96,7 +93,7 @@ class VcdParserState:
         elif linel[0] in ('$enddefinitions'):
             pass
         elif self.parsing_values:
-            VcdValueChange(linel)
+            return VcdValueChange(linel)
         else:
             raise KeyError('Unknown Key in VCD File')
         return None
@@ -104,10 +101,10 @@ class VcdParserState:
 
 class VcdReader(AggregatorInterface):
     """Parse a VCD file into `VcdElements`"""
-    def __init__(self, filename: str = None):
+    def __init__(self, filename: str = ''):
         """Parse given filename"""
         self._filename = filename
-        self._elements = []
+        self._elements: List[VcdElements] = []
         self._is_parsed = False
         self._parse()
 
