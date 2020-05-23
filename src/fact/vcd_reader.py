@@ -19,7 +19,8 @@ class VcdTimescale(VcdElements):
     """Configured Timescale"""
     def __init__(self, size, units):
         assert 1000 >= int(size) > 0
-        assert units in vcd.VCDWriter.TIMESCALE_UNITS
+        assert units in [
+            x.value for x in vcd.writer.TimescaleUnit.__members__.values()]
         self.size = size
         self.units = units
 
