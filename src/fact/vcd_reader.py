@@ -1,56 +1,8 @@
 """Parse a VCD file into its elements"""
-import vcd
 import logging
 from typing import List, Optional
 
 import fact.io_manager_interfaces as iomi
-
-
-# pylint: disable=too-few-public-methods
-class VcdEndOfFile(iomi.VcdElements, iomi.EndOfFile):
-    """Signal end-of-file"""
-
-
-# pylint: disable=too-few-public-methods
-class VcdTimescale(iomi.VcdElements):
-    """Configured Timescale"""
-    def __init__(self, size, units):
-        assert 1000 >= int(size) > 0
-        assert units in [
-            x.value for x in vcd.writer.TimescaleUnit.__members__.values()]
-        self.size = size
-        self.units = units
-
-
-class VcdDate(iomi.VcdElements):
-    """Configured Date"""
-    def __init__(self, date):
-        self.data = date
-
-
-class VcdVariable(iomi.VcdElements):
-    """Variable"""
-    # pylint: disable=too-many-arguments
-    def __init__(self, scope, name, var_type, ident, size=None, init=None):
-        self.scope = scope
-        self.name = name
-        self.ident = ident
-        self.var_type = var_type
-        self.size = size
-        self.init = init
-
-
-class VcdValueChange(iomi.VcdElements):
-    """New value for `VcdVariable`"""
-    def __init__(self, line: list):
-        if len(line) == 1:
-            self.value = line[0][0]
-            self.ident = line[0][0]  # Identifier
-        elif len(line) == 2:
-            self.value = line[0]
-            self.ident = line[1]
-        else:
-            raise ValueError
 
 
 class VcdParserState:
@@ -73,13 +25,13 @@ class VcdParserState:
         if line[0] == '#':
             self.tstamp = int(line[1:].strip())
         elif linel[0] == '$timescale':
-            return VcdTimescale(linel[1], linel[2])
+            return iomi.VcdTimescale(linel[1], linel[2])
         elif linel[0] == '$date':
-            return VcdDate(linel[1])
+            return iomi.VcdDate(linel[1])
         elif linel[0] == '$var':
             size = int(linel[2])
-            return VcdVariable('.'.join(self.scope), linel[4], linel[1],
-                               linel[3], size)
+            return iomi.VcdVariable('.'.join(self.scope), linel[4], linel[1],
+                                    linel[3], size)
         elif linel[0] == '$scope':
             if linel[2]:
                 logging.info('Scope: %s %s', linel[2], linel[3])
@@ -92,10 +44,12 @@ class VcdParserState:
             logging.info(self.scope)
         elif linel[0] == '$dumpvars':
             self.parsing_values = True
+        elif linel[0] == '$end':
+            assert self.parsing_values is True
         elif linel[0] in ['$enddefinitions']:
             pass
         elif self.parsing_values:
-            return VcdValueChange(linel)
+            return iomi.VcdValueChange(linel, self.tstamp)
         else:
             raise KeyError('Unknown Key in VCD File')
         return None
@@ -118,7 +72,7 @@ class VcdReader(iomi.AggregatorInterface):
             logging.info('Returning %i elements', len(cur_el))
             return cur_el
         if self._is_parsed:
-            return [VcdEndOfFile()]
+            return [iomi.VcdEndOfFile()]
         return []
 
     def namespace(self) -> str:
@@ -131,7 +85,7 @@ class VcdReader(iomi.AggregatorInterface):
             parsed_line = state.factory(line.strip())
             if parsed_line:
                 self._elements.append(parsed_line)
-        self._elements.append(VcdEndOfFile())
+        self._elements.append(iomi.VcdEndOfFile())
         self._is_parsed = True
         logging.info('Terminating parsing: %i elements', len(self._elements))
 
