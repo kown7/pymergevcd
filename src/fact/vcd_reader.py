@@ -1,20 +1,18 @@
 """Parse a VCD file into its elements"""
+import vcd
 import logging
 from typing import List, Optional
 
-import vcd
-
-from fact.io_manager import (AggregatorInterface,
-                             EndOfFile, VcdElements)  # noqa:I100
+import fact.io_manager_interfaces as iomi
 
 
 # pylint: disable=too-few-public-methods
-class VcdEndOfFile(VcdElements, EndOfFile):
+class VcdEndOfFile(iomi.VcdElements, iomi.EndOfFile):
     """Signal end-of-file"""
 
 
 # pylint: disable=too-few-public-methods
-class VcdTimescale(VcdElements):
+class VcdTimescale(iomi.VcdElements):
     """Configured Timescale"""
     def __init__(self, size, units):
         assert 1000 >= int(size) > 0
@@ -24,13 +22,13 @@ class VcdTimescale(VcdElements):
         self.units = units
 
 
-class VcdDate(VcdElements):
+class VcdDate(iomi.VcdElements):
     """Configured Date"""
     def __init__(self, date):
         self.data = date
 
 
-class VcdVariable(VcdElements):
+class VcdVariable(iomi.VcdElements):
     """Variable"""
     # pylint: disable=too-many-arguments
     def __init__(self, scope, name, var_type, ident, size=None, init=None):
@@ -42,7 +40,7 @@ class VcdVariable(VcdElements):
         self.init = init
 
 
-class VcdValueChange(VcdElements):
+class VcdValueChange(iomi.VcdElements):
     """New value for `VcdVariable`"""
     def __init__(self, line: list):
         if len(line) == 1:
@@ -64,7 +62,7 @@ class VcdParserState:
         self.parsing_values = False
 
     # pylint: disable=too-many-branches
-    def factory(self, line: str) -> Optional[VcdElements]:  # noqa:C901
+    def factory(self, line: str) -> Optional[iomi.VcdElements]:  # noqa:C901
         """Convert lines into VcdElements
 
         Default values are currently not supported. Rather they are
@@ -103,16 +101,16 @@ class VcdParserState:
         return None
 
 
-class VcdReader(AggregatorInterface):
+class VcdReader(iomi.AggregatorInterface):
     """Parse a VCD file into `VcdElements`"""
     def __init__(self, filename: str = ''):
         """Parse given filename"""
         self._filename = filename
-        self._elements: List[VcdElements] = []
+        self._elements: List[iomi.VcdElements] = []
         self._is_parsed = False
         self._parse()
 
-    def get_list(self) -> List[VcdElements]:
+    def get_list(self) -> List[iomi.VcdElements]:
         """Return all elements of file"""
         if self._elements:
             cur_el = self._elements[:]

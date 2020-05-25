@@ -1,33 +1,13 @@
 """Manage input"""
-import abc
 from typing import Callable, List
 
-
-# pylint: disable=too-few-public-methods
-class VcdElements(abc.ABC):
-    """Classes to return from parser"""
-
-
-# pylint: disable=too-few-public-methods
-class EndOfFile(abc.ABC):
-    """The files have finished"""
-
-
-class AggregatorInterface(abc.ABC):
-    """Classes to return from parser"""
-    @abc.abstractmethod
-    def get_list(self) -> List['VcdElements']:
-        """Return elements until end-of-file"""
-
-    @abc.abstractmethod
-    def namespace(self) -> str:
-        """Return namespace of this aggregator"""
+import fact.io_manager_interfaces as iomi
 
 
 class InputOutputManager:
     """Manages the entire data-flow"""
     def __init__(self, in_files: List[str],
-                 factory: Callable[[str], AggregatorInterface],
+                 factory: Callable[[str], iomi.AggregatorInterface],
                  ofiles: List[str], enable_diff: bool):
         self.readers = [factory(i) for i in in_files]
 
@@ -42,6 +22,6 @@ class InputOutputManager:
         for i, reader in enumerate(self.readers):
             element = reader.get_list()
             elements[i] = element
-            if len(element) == 1 and isinstance(element[0], EndOfFile):
+            if len(element) == 1 and isinstance(element[0], iomi.EndOfFile):
                 all_empty = False
         return all_empty
