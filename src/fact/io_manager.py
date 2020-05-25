@@ -3,10 +3,12 @@ import abc
 from typing import Callable, List
 
 
+# pylint: disable=too-few-public-methods
 class VcdElements(abc.ABC):
     """Classes to return from parser"""
 
 
+# pylint: disable=too-few-public-methods
 class EndOfFile(abc.ABC):
     """The files have finished"""
 
@@ -24,12 +26,13 @@ class AggregatorInterface(abc.ABC):
 
 class InputOutputManager:
     """Manages the entire data-flow"""
-    def __init__(self, files: List[str],
+    def __init__(self, in_files: List[str],
                  factory: Callable[[str], AggregatorInterface],
-                 ofile: str, enable_diff: bool):
-        self.readers = [factory(i) for i in files]
+                 ofiles: List[str], enable_diff: bool):
+        self.readers = [factory(i) for i in in_files]
 
     def run(self):
+        """Run configured readers and writers"""
         elements = [list() for _ in range(len(self.readers))]
         while self._all_readers_empty(elements):
             pass

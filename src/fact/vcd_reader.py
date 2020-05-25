@@ -8,10 +8,12 @@ from fact.io_manager import (AggregatorInterface,
                              EndOfFile, VcdElements)  # noqa:I100
 
 
+# pylint: disable=too-few-public-methods
 class VcdEndOfFile(VcdElements, EndOfFile):
     """Signal end-of-file"""
 
 
+# pylint: disable=too-few-public-methods
 class VcdTimescale(VcdElements):
     """Configured Timescale"""
     def __init__(self, size, units):
@@ -30,6 +32,7 @@ class VcdDate(VcdElements):
 
 class VcdVariable(VcdElements):
     """Variable"""
+    # pylint: disable=too-many-arguments
     def __init__(self, scope, name, var_type, ident, size=None, init=None):
         self.scope = scope
         self.name = name
@@ -60,6 +63,7 @@ class VcdParserState:
         self.scope = []
         self.parsing_values = False
 
+    # pylint: disable=too-many-branches
     def factory(self, line: str) -> Optional[VcdElements]:  # noqa:C901
         """Convert lines into VcdElements
 
@@ -90,7 +94,7 @@ class VcdParserState:
             logging.info(self.scope)
         elif linel[0] == '$dumpvars':
             self.parsing_values = True
-        elif linel[0] in ('$enddefinitions'):
+        elif linel[0] in ['$enddefinitions']:
             pass
         elif self.parsing_values:
             return VcdValueChange(linel)
