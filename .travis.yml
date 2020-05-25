@@ -19,6 +19,11 @@ matrix:
         - python: 3.8
           env: TOXENV=docs
 
+before_install:
+       - sudo apt-get -y install lmodern
+       - sudo apt-get -y install latexmk texlive texlive-latex-extra texlive-generic-extra texlive-xetex 
+       - sudo apt-get -y install texlive-fonts-recommended texlive-fonts-extra
+
 install:
   # Ensure virtualenv is up to date to avoid DeprecationWarning in bundled site.py.
   - pip install --upgrade virtualenv

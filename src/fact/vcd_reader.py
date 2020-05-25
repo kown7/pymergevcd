@@ -5,6 +5,7 @@ from typing import List, Optional
 import fact.io_manager_interfaces as iomi
 
 
+# pylint: disable=too-few-public-methods
 class VcdParserState:
     """Store current parse information and create new `VcdElements`"""
     def __init__(self):

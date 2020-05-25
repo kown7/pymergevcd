@@ -114,7 +114,7 @@ htmlhelp_basename = 'adoc'
 
 # -- Options for LaTeX output ------------------------------------------------
 
-latex_engine = 'xelatex'
+# latex_engine = 'xelatex'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
