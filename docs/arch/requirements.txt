@@ -1,2 +1,2 @@
 doit
-sltoo>=24.5b2
+sltoo>=24.5b4
