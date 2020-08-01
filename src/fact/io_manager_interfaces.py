@@ -21,6 +21,18 @@ class AggregatorInterface(abc.ABC):
         """Return namespace of this aggregator"""
 
 
+class WriterInterface(abc.ABC):
+    """Classes to return from parser"""
+    @abc.abstractmethod
+    def process_source(self, src: AggregatorInterface):
+        """Process an AggregatorInterface source
+
+        Args:
+           src: AggregatorInterface source, possibly VcdReaders
+
+    """
+
+
 class EndOfFile(abc.ABC):
     """The files have finished"""
 
