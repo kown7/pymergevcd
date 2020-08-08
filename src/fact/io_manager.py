@@ -1,9 +1,9 @@
 """Manage input"""
 from typing import List
 
-import fact.io_manager_interfaces as iomi
 import fact.vcd_reader
 import fact.vcd_writer
+import fact.merge_engine
 
 
 class InputOutputManager:
@@ -12,3 +12,5 @@ class InputOutputManager:
         """Merge the files given in in_files to ofile"""
         readers = [fact.vcd_reader.factory(i) for i in in_files]
         writer = fact.vcd_writer.factory(ofile)
+        mergee = fact.merge_engine.MergeEngine(readers)
+        writer.process_source(mergee)
