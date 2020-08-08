@@ -57,6 +57,10 @@ class VcdDate(VcdElements):
         self.date = date
 
 
+class VcdEndOfHeader(VcdElements):
+    """Indicate Header Parsing is over, data follows"""
+
+
 class VcdVariable(VcdElements):
     """Variable"""
     # pylint: disable=too-many-arguments

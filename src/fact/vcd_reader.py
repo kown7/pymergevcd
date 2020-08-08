@@ -48,7 +48,7 @@ class VcdParserState:
         elif linel[0] == '$end':
             assert self.parsing_values is True
         elif linel[0] in ['$enddefinitions']:
-            pass
+            return iomi.VcdEndOfHeader()
         elif self.parsing_values:
             return iomi.VcdValueChange(linel, self.tstamp)
         else:
