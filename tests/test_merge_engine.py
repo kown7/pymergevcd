@@ -1,8 +1,6 @@
 """Test Event Merging"""
-import filecmp
-
-import fact.io_manager_interfaces as iomi
 import fact.io_manager
+import fact.io_manager_interfaces as iomi
 
 
 def test_elements_out_of_merge_engine(record_property, dummy_vcd_file):
@@ -11,7 +9,7 @@ def test_elements_out_of_merge_engine(record_property, dummy_vcd_file):
     We need a timestamp element that is not none.
 
     """
-    record_property("req", "SW-AS-400-deadbeef")
+    record_property('req', 'SW-AS-400-deadbeef')
     readers = [fact.vcd_reader.factory(dummy_vcd_file),
                fact.vcd_reader.factory(dummy_vcd_file)]
     mergee = fact.merge_engine.MergeEngine(readers)
@@ -33,7 +31,7 @@ def test_merge_engine_single_file(record_property, dummy_vcd_file):
     We are getting wrong data in upper-level merge order
 
     """
-    record_property("req", "SW-AS-400-deadbeef")
+    record_property('req', 'SW-AS-400-deadbeef')
     readers = [fact.vcd_reader.factory(dummy_vcd_file)]
     mergee = fact.merge_engine.MergeEngine(readers)
     vcd_elements = mergee.get_list()

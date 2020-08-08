@@ -77,7 +77,7 @@ class VcdReader(iomi.AggregatorInterface):
         return []
 
     def namespace(self) -> str:
-        if self._filename[-4:] == ".vcd":
+        if self._filename[-4:] == '.vcd':
             namespace = self._filename[:-4]
         namespace = namespace.replace('.', '_')
         return namespace

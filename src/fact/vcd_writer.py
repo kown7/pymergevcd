@@ -1,11 +1,13 @@
 """Write the streams of `VcdElements` back into files"""
-from typing import List
 import logging
+from typing import List
+
 import vcd
 
 import fact.io_manager_interfaces as iomi
 
 
+# pylint: disable=too-few-public-methods
 class VcdComposer:
     """Create VCD file from `VcdElements` objects"""
     def __init__(self, fptr):
@@ -19,17 +21,21 @@ class VcdComposer:
     def _vw(self):
         """VCDWriter object with all things"""
         if self.__vw is None and self._timescale is not None:
-            logging.info("Setting up VCDWriter")
+            logging.info('Setting up VCDWriter')
             self.__vw = vcd.VCDWriter(self._fptr,
                                       timescale=self._timescale,
                                       date=self._date)
         return self.__vw
 
     def add_elements(self, elements: List[iomi.VcdElements]):
+        """Add list of `VcdElements` to the output file
+
+        Generally the output from the `get_list` call.
+
+        """
         for element in elements:
             if isinstance(element, iomi.VcdTimescale):
-                self._timescale = (str(element.size) + ' ' +
-                                   element.units)
+                self._timescale = (str(element.size) + ' ' + element.units)
                 logging.info(self._timescale)
             elif isinstance(element, iomi.VcdDate):
                 self._date = element.date
@@ -41,8 +47,7 @@ class VcdComposer:
                                           init=element.init)
                 self._vars[element.ident] = i
             elif isinstance(element, iomi.VcdValueChange):
-                self._vw.change(self._vars[element.ident],
-                                element.timestamp,
+                self._vw.change(self._vars[element.ident], element.timestamp,
                                 element.value)
             elif isinstance(element, iomi.VcdEndOfFile):
                 return False
@@ -55,6 +60,7 @@ class VcdWriter(iomi.WriterInterface):
         """Parse given filename"""
         assert filename
         self._filename = filename
+        self._src: iomi.AggregatorInterface
 
     def process_source(self, src: iomi.AggregatorInterface):
         """Add a source and process its content"""
@@ -70,8 +76,7 @@ class VcdWriter(iomi.WriterInterface):
             elements = self._src.get_list()
             assert isinstance(elements, list)
             suc = state.add_elements(elements)
-            logging.info("Terminating processing: %i elements",
-                         len(elements))
+            logging.info('Terminating processing: %i elements', len(elements))
 
 
 def factory(filename: str) -> VcdWriter:
