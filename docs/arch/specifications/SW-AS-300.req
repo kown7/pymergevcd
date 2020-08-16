@@ -1,7 +1,7 @@
 Name: IO Manager
 Topic: ReqsDocument
 Description: Manage data streams from reader to transformation engines.
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-04

@@ -1,7 +1,7 @@
 Name: CLI Output
 Topic: ReqsDocument
 Description: Specify the file to write the merged output. Use \texttt{-o <filename>}.
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-03

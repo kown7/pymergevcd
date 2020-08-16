@@ -2,7 +2,7 @@ Name: CLI Output Default Filename
 Topic: ReqsDocument
 Description: If no filename is given, use \texttt{out.vcd} as default.
 Rationale: Sometimes you can’t be bothered.
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-03

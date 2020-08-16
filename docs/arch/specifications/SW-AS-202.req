@@ -1,7 +1,7 @@
 Name: End-of-File Terminator
 Topic: ReqsDocument
 Description: Signal end-of-file with a \texttt{VcdEndOfFile} object.  Treat empty or non-existing files equally.
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-04

@@ -1,8 +1,8 @@
 Name: VCD Writer Inputs
 Topic: ReqsDocument
-Description: The output from \emph{VCD Reader RA} can be fed into the \emph{Writer} to create an identical output file (except timestamp).
-Rationale: Make the process as transparent as possible
-Status: not done
+Description: The output from \emph{AggregatorInterface} can be fed into the \emph{VCD Writer} to create an identical output file.
+Rationale: Make the process as transparent as possible.
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-30

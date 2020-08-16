@@ -1,7 +1,7 @@
 Name: CLI Input Files
 Topic: ReqsDocument
 Description: List the files to be merged on the command line. Treat command-line arguments as files.
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 5
 Invented on: 2020-05-03

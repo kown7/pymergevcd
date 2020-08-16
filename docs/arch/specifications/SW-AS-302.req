@@ -1,7 +1,7 @@
 Name: VcdElements
 Topic: ReqsDocument
 Description: Defines \texttt{VcdElements} interface.
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-04

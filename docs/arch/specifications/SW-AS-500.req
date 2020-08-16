@@ -1,7 +1,7 @@
 Name: VCD Writer RA
 Topic: ReqsDocument
 Description: Write events into one VCD file
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-04

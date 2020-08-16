@@ -1,7 +1,7 @@
 Name: Merge Events Engine
 Topic: TransformationEngines
 Description: Merges multiple streams into a single stream. Event’s timestamps must be monotonically increasing 
-Status: not done
+Status: external
 Owner: development
 Effort estimation: 1
 Invented on: 2020-05-04
