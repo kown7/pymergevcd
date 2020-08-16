@@ -27,3 +27,13 @@ def test_read_write_engines(record_property, dummy_vcd_file):
 
     writer.process_source(reader)
     assert filecmp.cmp(dummy_vcd_file, ofile)
+
+
+def test_merge_two_files(record_property, src_merge_file):
+    """Merge two files with given return expected answer"""
+    record_property('req', 'SW-AS-1-7d6734f3')
+    ofile = 'merge_two_files.vcd'
+    iom = fact.io_manager.InputOutputManager()
+    iom.merge_files([src_merge_file[0], src_merge_file[1]],
+                    ofile, 'today')
+    assert filecmp.cmp(src_merge_file[2], ofile)
