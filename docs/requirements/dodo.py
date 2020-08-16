@@ -36,7 +36,7 @@ def task_gnuplot():
             'name': filename,
             'file_dep': [os.path.join(os.getcwd(),
                          os.environ['RMTOO_CONTRIB_DIR'],
-                         'rmtoo/contrib/', filename)],
+                         filename)],
             'targets': [os.path.join('artifacts', filename.split('.')[0][8:] +
                         '.eps')],
             'actions': ['cd artifacts && gnuplot %(dependencies)s']
