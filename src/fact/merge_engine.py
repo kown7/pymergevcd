@@ -49,7 +49,11 @@ class MergeEngine(iomi.AggregatorInterface):
                     element.ident = i.namespace() + element.ident
                     values.append(element)
                 if isinstance(element, iomi.VcdVariable):
-                    element.scope = i.namespace() + '.' + element.scope
+                    if element.scope:
+                        element.scope = i.namespace() + '.' + element.scope
+                    else:
+                        element.scope = i.namespace()
+                    logging.info(element.scope)
                     element.ident = i.namespace() + element.ident
                     header.append(element)
                 if isinstance(element, iomi.VcdTimescale):
