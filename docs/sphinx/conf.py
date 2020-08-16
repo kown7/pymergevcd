@@ -19,12 +19,12 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'fact'
-copyright = ''
-author = 'a'
+project = 'pymergevcd'
+copyright = 'GPLv3'
+author = 'Kristoffer Nordström'
 
 # The short X.Y version
-version = ''
+version = '0.1'
 # The full version, including alpha/beta/rc tags
 release = ''
 

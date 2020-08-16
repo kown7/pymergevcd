@@ -7,7 +7,7 @@ import sys
 import colorama
 from exitstatus import ExitStatus
 
-import fact.io_manager
+import pymergevcd.io_manager
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,7 +32,7 @@ def main() -> ExitStatus:
     args = parse_args()
     print('Input files:' + colorama.Fore.CYAN + ' ' + str(args.infiles))
 
-    iom = fact.io_manager.InputOutputManager()
+    iom = pymergevcd.io_manager.InputOutputManager()
     iom.merge_files(args.infiles, args.o)
 
     return ExitStatus.success

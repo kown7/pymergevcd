@@ -2,7 +2,7 @@
 import logging
 from typing import List, Optional
 
-import fact.io_manager_interfaces as iomi
+import pymergevcd.io_manager_interfaces as iomi
 
 
 # pylint: disable=too-few-public-methods

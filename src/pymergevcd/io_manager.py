@@ -1,10 +1,10 @@
 """Manage input"""
 from typing import List, Optional
 
-import fact.io_manager_interfaces as iomi
-import fact.merge_engine
-import fact.vcd_reader
-import fact.vcd_writer
+import pymergevcd.io_manager_interfaces as iomi
+import pymergevcd.merge_engine
+import pymergevcd.vcd_reader
+import pymergevcd.vcd_writer
 
 
 # pylint: disable=too-few-public-methods
@@ -21,7 +21,7 @@ class InputOutputManager:
 
         """
         readers: List[iomi.AggregatorInterface] = [
-            fact.vcd_reader.factory(i) for i in in_files]
-        writer = fact.vcd_writer.factory(ofile)
-        mergee = fact.merge_engine.MergeEngine(readers, datestr)
+            pymergevcd.vcd_reader.factory(i) for i in in_files]
+        writer = pymergevcd.vcd_writer.factory(ofile)
+        mergee = pymergevcd.merge_engine.MergeEngine(readers, datestr)
         writer.process_source(mergee)

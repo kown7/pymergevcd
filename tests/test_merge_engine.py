@@ -1,6 +1,6 @@
 """Test Event Merging"""
-import fact.io_manager
-import fact.io_manager_interfaces as iomi
+import pymergevcd.io_manager
+import pymergevcd.io_manager_interfaces as iomi
 
 
 def test_elements_out_of_merge_engine(record_property, dummy_vcd_file):
@@ -10,9 +10,9 @@ def test_elements_out_of_merge_engine(record_property, dummy_vcd_file):
 
     """
     record_property('req', 'SW-AS-400-deadbeef')
-    readers = [fact.vcd_reader.factory(dummy_vcd_file),
-               fact.vcd_reader.factory(dummy_vcd_file)]
-    mergee = fact.merge_engine.MergeEngine(readers)
+    readers = [pymergevcd.vcd_reader.factory(dummy_vcd_file),
+               pymergevcd.vcd_reader.factory(dummy_vcd_file)]
+    mergee = pymergevcd.merge_engine.MergeEngine(readers)
     vcd_elements = mergee.get_list()
     has_header = False
     for i in vcd_elements:
@@ -32,8 +32,8 @@ def test_merge_engine_single_file(record_property, dummy_vcd_file):
 
     """
     record_property('req', 'SW-AS-400-deadbeef')
-    readers = [fact.vcd_reader.factory(dummy_vcd_file)]
-    mergee = fact.merge_engine.MergeEngine(readers)
+    readers = [pymergevcd.vcd_reader.factory(dummy_vcd_file)]
+    mergee = pymergevcd.merge_engine.MergeEngine(readers)
     vcd_elements = mergee.get_list()
     has_header = False
     for i in vcd_elements:

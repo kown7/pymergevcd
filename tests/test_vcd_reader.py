@@ -1,13 +1,13 @@
 """Test basic VCD file parsing"""
 import pytest
 
-import fact.io_manager_interfaces as iomi
-import fact.vcd_reader
+import pymergevcd.io_manager_interfaces as iomi
+import pymergevcd.vcd_reader
 
 
 def test_end_of_file(dummy_vcd_file):
     """Test if data is read and it all ends with an End-Of-File"""
-    vcdr = fact.vcd_reader.VcdReader(dummy_vcd_file)
+    vcdr = pymergevcd.vcd_reader.VcdReader(dummy_vcd_file)
     baseidx = 2
     entries = vcdr.get_list()
     assert isinstance(entries[0], iomi.VcdDate)
@@ -24,6 +24,6 @@ def test_end_of_file(dummy_vcd_file):
 def test_factory(dummy_vcd_file):
     """See if factory returns the correct objects"""
     with pytest.raises(ValueError):
-        fact.vcd_reader.factory(dummy_vcd_file + '.txt')
-    assert isinstance(fact.vcd_reader.factory(dummy_vcd_file),
-                      fact.vcd_reader.VcdReader)
+        pymergevcd.vcd_reader.factory(dummy_vcd_file + '.txt')
+    assert isinstance(pymergevcd.vcd_reader.factory(dummy_vcd_file),
+                      pymergevcd.vcd_reader.VcdReader)

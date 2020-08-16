@@ -7,17 +7,17 @@ import setuptools
 project_dir = Path(__file__).parent
 
 setuptools.setup(
-    name='fact',
-    version='1.0.0',
+    name='pymergevcd',
+    version='0.1',
 
-    description='Example Python project',
+    description='Merge various VCD files',
 
     # Allow UTF-8 characters in README with encoding argument.
     long_description=project_dir.joinpath('README.md').read_text(encoding='utf-8'),
     keywords=['python'],
 
-    author='',
-    url='https://github.com/johnthagen/python-blueprint',
+    author='Kristoffer Nordström',
+    url='https://github.com/kown7/pymergevcd',
 
     packages=setuptools.find_packages('src'),
     package_dir={'': 'src'},
@@ -57,6 +57,6 @@ setuptools.setup(
     ],
 
     entry_points={
-        'console_scripts': ['fact=fact.cli:main'],
+        'console_scripts': ['pymergevcd=pymergevcd.cli:main'],
     }
 )
