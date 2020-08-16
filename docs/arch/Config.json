@@ -12,7 +12,7 @@
     },
     "traceability": {
 	"files": {
-	    "UT": ["../rmtoo/result.xml", "xunit"]
+	    "UT": ["../../result.xml", "xunit"]
 	}
     },
     "requirements": {
