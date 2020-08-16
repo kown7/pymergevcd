@@ -1,6 +1,6 @@
 """Merge one or more VCD files"""
 import logging
-from typing import List
+from typing import List, Optional
 
 import fact.io_manager_interfaces as iomi
 
@@ -8,8 +8,10 @@ import fact.io_manager_interfaces as iomi
 class MergeEngine(iomi.AggregatorInterface):
     """Merge multiple files"""
 
-    def __init__(self, sources: List[iomi.AggregatorInterface]):
+    def __init__(self, sources: List[iomi.AggregatorInterface],
+                 datestr: Optional[str] = None):
         self.sources: List[iomi.AggregatorInterface] = sources
+        self._datestr = datestr
 
     # pylint: disable=too-many-branches
     def get_list(self) -> List[iomi.VcdElements]:  # noqa: C901
@@ -38,6 +40,9 @@ class MergeEngine(iomi.AggregatorInterface):
         header: List[iomi.VcdElements] = []
         values: List[iomi.VcdValueChange] = []
         timescale = None
+        if self._datestr is not None:
+            header.append(iomi.VcdDate(self._datestr))
+
         for i in self.sources:
             for element in elements_arr[i]:
                 if isinstance(element, iomi.VcdValueChange):
