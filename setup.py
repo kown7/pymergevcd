@@ -8,12 +8,13 @@ project_dir = Path(__file__).parent
 
 setuptools.setup(
     name='pymergevcd',
-    version='0.3',
+    version='0.4',
 
     description='Merge various VCD files',
 
     # Allow UTF-8 characters in README with encoding argument.
     long_description=project_dir.joinpath('README.md').read_text(encoding='utf-8'),
+    long_description_content_type="text/markdown",
     keywords=['python'],
 
     author='Kristoffer Nordström',
