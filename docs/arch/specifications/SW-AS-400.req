@@ -1,6 +1,6 @@
 Name: Merge Events Engine
 Topic: TransformationEngines
-Description: Merges multiple streams into a single stream. Event’s timestamps must be monotonically increasing 
+Description: Merges multiple streams into a single stream. Event’s timestamps must be monotonically increasing
 Status: external
 Owner: development
 Effort estimation: 1
