@@ -1,6 +1,6 @@
 Name: VCD Reader RA
 Topic: ReqsDocument
-Description: Implements \texttt{AggregatorInterface} interface.
+Description: Implements an \texttt{AggregatorInterface} interface.
 Status: external
 Owner: development
 Effort estimation: 1
