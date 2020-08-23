@@ -1,8 +1,3 @@
----
-title: PyMergeVCD
-author: Kristoffer Nordström
----
-
 ![MIT License](https://img.shields.io/github/license/kown7/pymergevcd "MIT License")
 
 # Introduction
@@ -28,5 +23,5 @@ Please see the `docs` folder.
 
 ## Usage
 
-TBD
+pymergevcd -o merged_out.vcd in.vcd in.vcd 
 
