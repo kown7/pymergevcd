@@ -1,5 +1,6 @@
 import os
 import glob
+import git
 
 
 def task_rmtoo():
@@ -17,6 +18,23 @@ def task_rmtoo():
                     'artifacts/req-graph1.dot', 'artifacts/req-graph2.dot'],
         'actions': ['sltoo -j file://Config.json']
     }
+
+
+def task_write_filename():
+    def write_revision_information():
+        with open(os.path.join('artifacts', 'version.txt'), 'w+') as fp:
+            repo = git.Repo(search_parent_directories=True)
+            fp.write(repo.git.describe())
+            fp.write(' --- ')
+            fp.write(repo.head.object.hexsha[:8])
+
+    yield {
+        'name': 'version-file',
+        'file_dep': [],
+        'targets': [os.path.join('artifacts', 'version.tex')],
+        'actions': [write_revision_information]
+    }
+
 
 def task_gnuplot():
     for filename in [ 'gnuplot_stats_reqs_cnt.inc',
@@ -36,8 +54,9 @@ EPS_FILES = [ 'stats_reqs_cnt', 'stats_burndown', 'stats_sprint_burndown']
 def task_pdflatex():
     texs = [i for i in glob.glob('artifacts/*.tex', recursive=True) if os.path.isfile(i)]
     return {
-        'file_dep':  texs + [ os.path.join('artifacts', i + '.pdf')
-                              for i in EPS_FILES ],
+        'file_dep':  texs + [os.path.join('artifacts', i + '.pdf')
+                             for i in EPS_FILES] + [
+                                     os.path.join('artifacts', 'version.txt')],
         'targets': ['artifacts/specification.pdf'],
         'actions': [3*'pdflatex -interaction=nonstopmode -output-directory=artifacts latex/specification.tex;']
     }
