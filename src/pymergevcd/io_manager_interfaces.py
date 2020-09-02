@@ -79,7 +79,7 @@ class VcdValueChange(VcdElements):
         self.timestamp = tstamp
         if len(line) == 1:
             self.value = line[0][0]
-            self.ident = line[0][0]  # Identifier
+            self.ident = line[0][1:]  # Identifier
         elif len(line) == 2:
             self.value = line[0]
             self.ident = line[1]
