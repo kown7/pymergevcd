@@ -7,7 +7,7 @@ def task_rmtoo():
     reqs = [i for i in glob.glob('specifications/**', recursive=True) if os.path.isfile(i)]
     topics = [i for i in glob.glob('topics/**', recursive=True) if os.path.isfile(i)]
     html = [i for i in glob.glob('html/**', recursive=True) if os.path.isfile(i)]
-    deps = ['Config.json']
+    deps = ['Config.json', 'artifacts/version.txt']
     deps.extend(reqs)
     deps.extend(topics)
     deps.extend(html)
@@ -31,7 +31,7 @@ def task_write_filename():
     yield {
         'name': 'version-file',
         'file_dep': [],
-        'targets': [os.path.join('artifacts', 'version.tex')],
+        'targets': [os.path.join('artifacts', 'version.txt')],
         'actions': [write_revision_information]
     }
 
