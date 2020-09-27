@@ -1,12 +1,13 @@
 import os
 import glob
+import git
 
 
 def task_rmtoo():
     reqs = [i for i in glob.glob('specifications/**', recursive=True) if os.path.isfile(i)]
     topics = [i for i in glob.glob('topics/**', recursive=True) if os.path.isfile(i)]
     html = [i for i in glob.glob('html/**', recursive=True) if os.path.isfile(i)]
-    deps = ['Config.json']
+    deps = ['Config.json', 'artifacts/version.txt']
     deps.extend(reqs)
     deps.extend(topics)
     deps.extend(html)
@@ -17,6 +18,23 @@ def task_rmtoo():
                     'artifacts/req-graph1.dot', 'artifacts/req-graph2.dot'],
         'actions': ['rmtoo -j file://Config.json']
     }
+
+
+def task_write_filename():
+    def write_revision_information():
+        with open(os.path.join('artifacts', 'version.txt'), 'w+') as fp:
+            repo = git.Repo(search_parent_directories=True)
+            fp.write(repo.git.describe())
+            fp.write(' --- ')
+            fp.write(repo.head.object.hexsha[:8])
+
+    yield {
+        'name': 'version-file',
+        'file_dep': [],
+        'targets': [os.path.join('artifacts', 'version.txt')],
+        'actions': [write_revision_information]
+    }
+
 
 EPS_FILES = [ 'stats_reqs_cnt', 'stats_burndown', 'stats_sprint_burndown']
 def task_pdflatex():
