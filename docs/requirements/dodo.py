@@ -20,13 +20,28 @@ def task_rmtoo():
     }
 
 
+def describe_path(subfolder: str):
+    """Get hash of latest change to path file/directory"""
+    d = []
+    repo = git.Repo(search_parent_directories=True)
+    for blob in repo.heads.master.commit.tree.traverse():
+        commit = next(repo.iter_commits(paths=blob.path))
+        if blob.path.startswith(subfolder):
+            d.append({'date': commit.committed_date,
+                      'blob': blob, 'commit': commit})
+    d.sort(key=lambda x: x['date'])
+    latest_hash = d[-1]['commit'].hexsha
+    desc = repo.git.describe(latest_hash)
+    return desc, latest_hash
+
+
 def task_write_filename():
     def write_revision_information():
         with open(os.path.join('artifacts', 'version.txt'), 'w+') as fp:
-            repo = git.Repo(search_parent_directories=True)
-            fp.write(repo.git.describe())
+            (desc, hexsha) = describe_path('docs/requirements')
+            fp.write(desc)
             fp.write(' --- ')
-            fp.write(repo.head.object.hexsha[:8])
+            fp.write(hexsha[:8])
 
     yield {
         'name': 'version-file',
