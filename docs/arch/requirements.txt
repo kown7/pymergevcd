@@ -1,3 +1,3 @@
 doit
-sltoo>=24.5b4
+sltoo==24.5b5
 gitpython

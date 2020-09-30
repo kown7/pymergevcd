@@ -1,2 +1,1 @@
-doit
-git+git://github.com/kown7/rmtoo@tracemat2
+../arch/requirements.txt
