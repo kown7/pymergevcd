@@ -10,11 +10,11 @@ stages:
 matrix:
     include:
         - python: 3.6
-          env: TOXENV=py36
+          env: TOXENV=py36,reqs
         - python: 3.7
           env: TOXENV=py37
         - python: 3.8
-          env: TOXENV=py38,reqs
+          env: TOXENV=py38
         - python: 3.8
           env: TOXENV=pep8,mypy
         - python: 3.8
