@@ -6,6 +6,8 @@ Merge VCD files, optionally to create a diff on various files and signals.
 
 Also a playground for [sltoo](https://www.github.com/kown7/sltoo).
 
+Requirements and architecure documents are [here](https://kown7.github.com/pymergevcd).
+
 
 # Installation
 
