@@ -38,12 +38,22 @@ notifications:
   email: false
 
 deploy:
-  provider: pypi
-  username: "__token__"
-  password:
-     secure: R1Dc1s3bkak8Qn8kGu6v6o36PmjyApcXej71sdrQDYv86gPZUcKDLEcP3BJRqnbySvoKUz9pr5zwcKFmfdm58rP2Eb24yFyhrKXJiIf6zRK2n3+UMGkNgNukvY/6v0/95BRqlm5qfPl5bpgzCCN+OVxs51BWSSZaK46y/vhStZXeUBqDPliguHyHXTCKTLZM/0ug8TXBGuh4jG/lV/3n9PRtrUzwvYEhsSvetH47jpVaWTSN30cPtrNqA9dcFwFVnjOcliV3ttU1vlmLGBaZEQ5/g1I1ZRD+yctBadtVK9fnAK3iui1egre92LT9EeJbjbGa+3uHg4XoXNDFojxiKmvhu3ddYXr3DOd3vomD8Y+B7oNhSZvdmTknRC/MITMvQEs5T9O2E9kHMPrSxKHrB7AIASp67YGtqupPU7uyhiErVj20MEmUXuWLZnhQhi+bGaCIyI+4vcZqDsP+N2yP33GIC2xAgUJTZOHduXj0dsayVS/TUll4BoI6EyHs8J2ItzPxpV62hHYOr2zcwOWbWZ7KfLks1ScuYBSLdDA3hyZ7sZBGgoOkyZmNWsKVXPoFdgFo55lMrCs2LOXOSC1CESW5kbLuKYtdU3Vi0lT/9Hrdvygq3909XmXsbeAt/QoJqsqVw+uwgU46aadlpduwkp/OClfBgFCdtjFLWRjKUhM=
-  distributions: "sdist bdist_wheel"
-  on:
-    tags: true
-    python: 3.6
-
+  - provider: pypi
+    username: "__token__"
+    password:
+       secure: R1Dc1s3bkak8Qn8kGu6v6o36PmjyApcXej71sdrQDYv86gPZUcKDLEcP3BJRqnbySvoKUz9pr5zwcKFmfdm58rP2Eb24yFyhrKXJiIf6zRK2n3+UMGkNgNukvY/6v0/95BRqlm5qfPl5bpgzCCN+OVxs51BWSSZaK46y/vhStZXeUBqDPliguHyHXTCKTLZM/0ug8TXBGuh4jG/lV/3n9PRtrUzwvYEhsSvetH47jpVaWTSN30cPtrNqA9dcFwFVnjOcliV3ttU1vlmLGBaZEQ5/g1I1ZRD+yctBadtVK9fnAK3iui1egre92LT9EeJbjbGa+3uHg4XoXNDFojxiKmvhu3ddYXr3DOd3vomD8Y+B7oNhSZvdmTknRC/MITMvQEs5T9O2E9kHMPrSxKHrB7AIASp67YGtqupPU7uyhiErVj20MEmUXuWLZnhQhi+bGaCIyI+4vcZqDsP+N2yP33GIC2xAgUJTZOHduXj0dsayVS/TUll4BoI6EyHs8J2ItzPxpV62hHYOr2zcwOWbWZ7KfLks1ScuYBSLdDA3hyZ7sZBGgoOkyZmNWsKVXPoFdgFo55lMrCs2LOXOSC1CESW5kbLuKYtdU3Vi0lT/9Hrdvygq3909XmXsbeAt/QoJqsqVw+uwgU46aadlpduwkp/OClfBgFCdtjFLWRjKUhM=
+    distributions: "sdist bdist_wheel"
+    on:
+      tags: true
+      python: 3.6
+  - provider: pages
+    script: docs/build_page.sh
+    skip-cleanup: true
+    local_dir: public_html
+    github-token: $GITHUB_TOKEN
+    # Incremental commit to keep old build/files from previous deployments
+    keep-history: true
+    target_branch: gh-pages
+    on:
+      branch: master
+      python: 3.6
