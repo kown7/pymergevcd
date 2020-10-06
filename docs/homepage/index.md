@@ -4,9 +4,19 @@ You can use the [editor on GitHub](https://github.com/kown7/pymergevcd/edit/gh-p
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-## Requirements
+## Create documents
+
+These documents are regenerated on every push. The assets folder need to be in the repository, otherwise it's ignored by travis' deploy script.
+
+To set a released document create an annotated tag, e.g., for version `1A` use `git tag -a SWC-RS/1A`. Alternatively use the same tags that are used for the release of the software. This will unfortunately lead to what can seem as outdated documents.
+
+### Requirements
 
 This homepage has the latest and greatest requirements documents for this tool: [requirements.pdf](assets/requirements/artifacts/specification.pdf).
+
+### Architecture
+
+This homepage has the latest and greatest software component and architecture specification document for this tool: [requirements.pdf](assets/arch/artifacts/specification.pdf).
 
 ### Markdown
 
