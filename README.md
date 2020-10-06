@@ -25,5 +25,5 @@ Please see the `docs` folder.
 
 ## Usage
 
-pymergevcd -o merged_out.vcd in.vcd in.vcd 
+pymergevcd -o merged_out.vcd in1.vcd in2.vcd 
 

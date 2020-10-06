@@ -1,51 +1,54 @@
-## Welcome to GitHub Pages
+## Introduction
 
-You can use the [editor on GitHub](https://github.com/kown7/pymergevcd/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+The need to merge VCD files with `Python` has emerged as feature for the
+`pyvcd` project. At the same time there was a need to test the traceability
+features in `sltoo`. Hence this project was born.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Usage and installation is described in the *Readme.md* file. In a nutshell:
+
+```bash
+pip install pymergevcd
+pymergevcd -o merged_out.vcd in1.vcd in2.vcd
+```
+
+
+## Concept
+
+In regulatory environments there's a need for released documents. In this
+section we try to document one approach using
+*[sltoo](https://www.github.com/kown7/sltoo)* to generate the requirements
+specifications.
+
+There's an in-depth discussion in [ReqSecDevOps](reqsecdevops.md).
 
 ## Create documents
 
-These documents are regenerated on every push. The assets folder need to be in the repository, otherwise it's ignored by travis' deploy script.
+These documents are regenerated on every push. The `assets/` folder need to be
+in the repository, otherwise it's ignored by travis' deploy script.
 
-To set a released document create an annotated tag, e.g., for version `1A` use `git tag -a SWC-RS/1A`. Alternatively use the same tags that are used for the release of the software. This will unfortunately lead to what can seem as outdated documents.
+The documents are versioned by calling git describe over the respective
+subfolder, e.g., for the architecture document
+
+```bash
+git describe $(git log -n 1 --format=%H -- docs/arch)
+```
+
+The idea is to have the equivalent of versioned documents. 
+
+To set a version for a document create an annotated tag, e.g., for version `1A`
+of the *software component specification* use `git tag -a SWC-RS/1A`.
+Alternatively use the same tags that are used for the release of the software.
+This will unfortunately lead to what can seem as outdated documents.
 
 ### Requirements
 
-This homepage has the latest and greatest requirements documents for this tool: [requirements.pdf](assets/requirements/artifacts/specification.pdf).
+[Requirements specification](assets/requirements/artifacts/specification.pdf).
 
 ### Architecture
 
-This homepage has the latest and greatest software component and architecture specification document for this tool: [requirements.pdf](assets/arch/artifacts/specification.pdf).
+[Software Architecture](assets/arch/artifacts/specification.pdf).
 
-### Markdown
+### Autodoc
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+TODO
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kown7/pymergevcd/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
