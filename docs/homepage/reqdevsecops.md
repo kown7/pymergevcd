@@ -1,6 +1,16 @@
+---
+title: ReqDevSecOps
+tags: [ reqdevsecops, devsecops, requirements ]
+---
+
 # Summary
 
-tbd
+A simple way to edit and track requirements in your repository. Export and
+import items using Excel sheets. Automatically create PDF documents from the
+stored specification items.
+
+Create close-out references that get invalidated as soon as the requirements
+change.
 
 # Introduction
 
