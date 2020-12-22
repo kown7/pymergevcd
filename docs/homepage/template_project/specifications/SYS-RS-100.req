@@ -1,0 +1,11 @@
+Name: First Sub-System
+Topic: SubProject
+Description: Subsystem describes \emph{this} part of the problem.
+Rationale: We partition the requirements
+Status: not done
+Owner: development
+Effort estimation: 5
+Invented on: 2020-12-22
+Invented by: REQM
+Type: requirement
+Priority: development:10

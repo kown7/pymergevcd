@@ -132,8 +132,13 @@ implementation
 
 ## Quick-Start
 
-* add Zipfile for example testcase
-* run locally or in docker
+Download the [ZIP file](assets/template_project.zip) and run the`./run.sh`
+script. See the README for Docker options. Without Docker, a working Python 3
+installation is required.
+
+The generated spreadsheet can be modified and will be imported if copied 
+to the `imports` folder.
+
 * show example of adding it to CI pipeline
 * maybe run it in gitlab?
 
