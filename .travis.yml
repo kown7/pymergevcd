@@ -38,7 +38,6 @@ notifications:
   email: false
 
 after_success:
-  - echo $TRAVIS_PYTHON_VERSION
   - test $TRAVIS_PYTHON_VERSION = "3.6" && "./docs/build_page.sh"
 
 deploy:
@@ -56,7 +55,7 @@ deploy:
     local_dir: public_html
     github-token: $GITHUB_TOKEN
     # Incremental commit to keep old build/files from previous deployments
-    keep-history: true
+    keep-history: false
     target_branch: gh-pages
     on:
       branch: master

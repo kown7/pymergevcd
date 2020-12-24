@@ -14,7 +14,8 @@ cp -r docs/requirements/artifacts public_html/assets/requirements
 cd docs/homepage/
 zip -r ../../public_html/assets/template_project.zip template_project
 cd -
-# ls -lR public_html/
+
+ls -lR public_html/
 
 # cd public_html
 # bundle exec jekyll build && bundle htmlproofer ./_site
