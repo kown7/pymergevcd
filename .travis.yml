@@ -38,7 +38,8 @@ notifications:
   email: false
 
 after_success:
-  - "./docs/build_page.sh"
+  - echo $TRAVIS_PYTHON_VERSION
+  - test $TRAVIS_PYTHON_VERSION = "3.6" && "./docs/build_page.sh"
 
 deploy:
   - provider: pypi
