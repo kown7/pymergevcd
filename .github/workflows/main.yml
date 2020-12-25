@@ -1,0 +1,54 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2020  GitHub, Inc. and contributors
+# see https://github.com/actions/starter-workflows/
+#
+# vim: set filetype=yaml ts=2 sts=2 sw=2 expandtab
+
+name: build
+on: [push]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      USING_COVERAGE: '3.8'
+      USING_DOCUMENTS: '3.6'
+    strategy:
+      matrix: 
+        python-version: [3.6, 3.8]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          python --version
+          python -m pip install wheel
+          python -m pip install tox
+          python -m pip install tox-gh-actions
+      - name: Install Documents Dependencies
+        if: "contains(env.USING_DOCUMENTS, matrix.python-version)"
+        run: sudo apt-get -y install graphviz gnuplot-nox ghostscript lmodern latexmk texlive texlive-latex-extra texlive-generic-extra texlive-xetex texlive-font-utils texlive-fonts-recommended texlive-fonts-extra
+      - name: Run Tests
+        run: python -m tox
+      - name: Build Homepage
+        if: "contains(env.USING_DOCUMENTS, matrix.python-version)"
+        run: "./docs/build_page.sh"
+      - name: "Upload coverage to Codecov"
+        if: "contains(env.USING_COVERAGE, matrix.python-version)"
+        uses: "codecov/codecov-action@v1"
+        with:
+          fail_ci_if_error: true
+      - name: "Update github pages 🚀"
+        if: "contains(env.USING_DOCUMENTS, matrix.python-version)"
+        uses: "JamesIves/github-pages-deploy-action@3.7.1"
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: public_html
+          CLEAN: true # Automatically remove deleted files from the deploy branch

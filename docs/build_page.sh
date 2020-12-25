@@ -4,12 +4,11 @@ cd $(dirname "$(readlink -f "$0")")
 cd ..
 mkdir public_html
 
-cp -r docs/homepage/. public_html
-rm -rf public_html/template_project  # remove again
+rsync -avh --exclude ".gitignore" --exclude "template_project" docs/homepage/. public_html
 mkdir -p public_html/assets/arch/
-cp -r docs/arch/artifacts public_html/assets/arch
+rsync -avh --exclude ".gitignore" docs/arch/artifacts public_html/assets/arch
 mkdir -p public_html/assets/requirements/
-cp -r docs/requirements/artifacts public_html/assets/requirements
+rsync -avh --exclude ".gitignore" docs/requirements/artifacts public_html/assets/requirements
 
 cd docs/homepage/
 zip -r ../../public_html/assets/template_project.zip template_project
