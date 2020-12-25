@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       USING_COVERAGE: '3.8'
+      USING_DOCUMENTS: '3.6'
     strategy:
       matrix: 
         python-version: [3.6, 3.8]
@@ -37,3 +38,11 @@ jobs:
         uses: "codecov/codecov-action@v1"
         with:
           fail_ci_if_error: true
+      - name: "Update github pages 🚀"
+        if: "contains(env.USING_DOCUMENTS, matrix.python-version)"
+        uses: "JamesIves/github-pages-deploy-action@3.7.1"
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: public_html
+          CLEAN: true # Automatically remove deleted files from the deploy branch
