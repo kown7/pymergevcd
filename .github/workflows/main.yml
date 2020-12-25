@@ -36,6 +36,9 @@ jobs:
         run: sudo apt-get -y install graphviz gnuplot-nox ghostscript lmodern latexmk texlive texlive-latex-extra texlive-generic-extra texlive-xetex texlive-font-utils texlive-fonts-recommended texlive-fonts-extra
       - name: Run Tests
         run: python -m tox
+      - name: Build Homepage
+        if: "contains(env.USING_DOCUMENTS, matrix.python-version)"
+        run: "./docs/build_page.sh"
       - name: "Upload coverage to Codecov"
         if: "contains(env.USING_COVERAGE, matrix.python-version)"
         uses: "codecov/codecov-action@v1"
