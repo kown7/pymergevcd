@@ -12,6 +12,8 @@ stored specification items.
 Create close-out references that get invalidated as soon as the requirements
 change.
 
+See [Quick-Start](#quick-start) to just try it out.
+
 # Introduction
 
 Once upon a time people learned how to write software[^2].  Then people 
@@ -133,11 +135,14 @@ implementation
 ## Quick-Start
 
 Download the [ZIP file](assets/template_project.zip) and run the`./run.sh`
-script. See the README for Docker options. Without Docker, a working Python 3
-installation is required.
+script (or `./run-docker.sh` if Docker is installed). Without Docker, a working
+Python 3 installation is required. This generates the documents in the
+`artifacts/` directory, especially the `specification.pdf` and
+`specification.xlsx`.
 
-The generated spreadsheet can be modified and will be imported if copied 
-to the `imports` folder.
+The generated spreadsheet can be distributed to stakeholders to be modified. If
+it's copied to the `imports` folder, the changes will be incorporated with the
+next run.
 
 * show example of adding it to CI pipeline
 * maybe run it in gitlab?
