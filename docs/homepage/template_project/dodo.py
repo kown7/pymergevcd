@@ -23,7 +23,10 @@ def task_rmtoo():
 def describe_path(subfolder: str):
     """Get hash of latest change to path file/directory"""
     d = []
-    repo = git.Repo(search_parent_directories=True)
+    try:
+        repo = git.Repo(search_parent_directories=True)
+    except git.exc.InvalidGitRepositoryError:
+        return 'n/a', '00000000'
     for blob in repo.heads.master.commit.tree.traverse():
         commit = next(repo.iter_commits(paths=blob.path))
         if blob.path.startswith(subfolder):
