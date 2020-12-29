@@ -16,7 +16,7 @@ pymergevcd -o merged_out.vcd in1.vcd in2.vcd
 
 In regulatory environments there's a need for released documents. In this
 section we try to document one approach using
-*[sltoo](https://www.github.com/kown7/sltoo)* to generate the requirements
+*[sltoo](https://www.github.com/kown7/rmtoo)* to generate the requirements
 specifications.
 
 There's an in-depth discussion in [ReqDevSecOps](reqdevsecops.md).
