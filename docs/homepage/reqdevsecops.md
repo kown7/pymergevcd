@@ -3,18 +3,23 @@ title: ReqDevSecOps
 tags: [ reqdevsecops, devsecops, requirements ]
 ---
 
-# Summary
-
-A simple way to edit and track requirements in your repository. Export and
-import items using Excel sheets. Automatically create PDF documents from the
-stored specification items.
-
-Create close-out references that get invalidated as soon as the requirements
-change.
-
-See [Quick-Start](#quick-start) to just try it out.
-
 # Introduction
+
+Extend *DevOps* with *specifications documents* and automate as much as 
+we can.
+
+* Keep the specifications documents and code synchronised
+    * Create close-out references that get invalidated as soon as the requirements change.
+* Automate the generation of documents[^4]
+    * Always up-to-date documents
+	* Document versioning is supported with git tags
+* Fail the CI-pipeline if requirements change
+
+
+Skip ahead to [Quick-Start](#quick-start) to try out the proof of concept 
+implementation for yourself or see it in action for [pymergevcd](index.md).
+
+# Motivation
 
 Once upon a time people learned how to write software[^2].  Then people 
 started doing *frozen waterfall*[^3], which was never the idea.
@@ -45,7 +50,7 @@ automated, which means even more code. Who writes the code? The developer and *D
 
 Deployment straight out of your CI pipline: continuous delivery (CD).
 
-Point two above guarantees that there was no documentation for the customer's managers.
+Point two above guarantees that there was no documentation for the customer.
 
 
 ## DevSecOps
@@ -155,3 +160,4 @@ next run.
 
 [^2]: [Managing The Development Of Large Software Systems, Dr. Winston W. Royce](http://www-scf.usc.edu/~csci201/lectures/Lecture11/royce1970.pdf)  
 [^3]: [BA Wiki Waterfall](http://www.bawiki.com/wiki/Waterfall.html)
+[^4]: The main point of CI/CD is to unambigouosly document the processes to compile, test and ship software.
