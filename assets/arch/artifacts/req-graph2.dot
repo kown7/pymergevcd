@@ -1,0 +1,31 @@
+digraph reqdeps {
+rankdir=BT;
+mclimit=10.0;
+nslimit=10.0;ranksep=1;
+subgraph cluster_GRAPH_ReqsDocument {
+ label="Topic: ReqsDocument";
+ "SW-AS-1" [label="SW-AS-1\n[0.00]"];
+ "SW-AS-100" [label="SW-AS-100\n[0.00]"];
+ "SW-AS-101" [label="SW-AS-101\n[0.00]"];
+ "SW-AS-102" [label="SW-AS-102\n[0.00]"];
+ "SW-AS-200" [label="SW-AS-200\n[0.00]"];
+ "SW-AS-201" [label="SW-AS-201\n[0.00]"];
+ "SW-AS-202" [label="SW-AS-202\n[0.00]"];
+ "SW-AS-300" [label="SW-AS-300\n[0.00]"];
+ "SW-AS-301" [label="SW-AS-301\n[0.00]"];
+ "SW-AS-302" [label="SW-AS-302\n[0.00]"];
+ "SW-AS-500" [label="SW-AS-500\n[0.00]"];
+ "SW-AS-501" [label="SW-AS-501\n[0.00]"];
+ }
+"SW-AS-100" -> "SW-AS-1";
+"SW-AS-101" -> "SW-AS-1";
+"SW-AS-102" -> "SW-AS-101";
+"SW-AS-200" -> "SW-AS-1";
+"SW-AS-201" -> "SW-AS-200";
+"SW-AS-202" -> "SW-AS-200";
+"SW-AS-300" -> "SW-AS-1";
+"SW-AS-301" -> "SW-AS-300";
+"SW-AS-302" -> "SW-AS-300";
+"SW-AS-500" -> "SW-AS-1";
+"SW-AS-501" -> "SW-AS-500";
+}

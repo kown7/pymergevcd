@@ -1,0 +1,13 @@
+digraph reqdeps {
+rankdir=BT;
+mclimit=10.0;
+nslimit=10.0;ranksep=1;
+"SW-RS-1" [fontcolor=red,label="SW-RS-1\n[0.00]"];
+"SW-RS-100" [fontcolor=red,label="SW-RS-100\n[0.00]"];
+"SW-RS-100" -> "SW-RS-1";
+"SW-RS-101" [fontcolor=red,label="SW-RS-101\n[0.00]"];
+"SW-RS-101" -> "SW-RS-100";
+"SW-RS-110" [fontcolor=red,label="SW-RS-110\n[0.00]"];
+"SW-RS-110" -> "SW-RS-1";
+ReqVersion [shape=plaintext label="ReqVersion\nCommit [None] VCS Id [topics]"]
+}

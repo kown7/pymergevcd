@@ -1,0 +1,116 @@
+% Output topic 'ReqsDocument'
+
+
+\chapter{Software Requirements Specification}
+
+This document describes the requirements defined for \emph{pymergevcd}.
+
+\paragraph{VCD Merger}
+
+\hypertarget{SW-RS-1}{SW-RS-1} 
+\label{SW-RS-1}
+
+Merge multiple files
+
+\textbf{Rationale:} compare files visually
+
+\textbf{Note:} 
+
+ \textbf{Solved by:}
+ \hyperlink{SW-RS-100}{SW-RS-100}  \hyperlink{SW-RS-110}{SW-RS-110} 
+
+
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-RS-1               & Priority: & 0.0          & Owner: & customers \\
+   Invented on: & 2019-12-15 & Invented by: & default & Status: & not done \\
+   Class: & detailable & Hash: & 7d6734f3
+\end{tabular}\end{center}
+}
+
+\paragraph{Merge Two Files}
+
+\hypertarget{SW-RS-100}{SW-RS-100} 
+\label{SW-RS-100}
+
+Merge two VCD files into one with a separate namespace for each file.
+
+\textbf{Rationale:} 
+
+\textbf{Note:} 
+
+ \textbf{Solved by:}
+ \hyperlink{SW-RS-101}{SW-RS-101} 
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-RS-1}{SW-RS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-RS-100               & Priority: & 0.0          & Owner: & customers \\
+   Invented on: & 2019-12-15 & Invented by: & default & Status: & not done \\
+   Class: & detailable & Hash: & d4b3ef7c
+\end{tabular}\end{center}
+}
+
+\paragraph{Merge Multiple Files}
+
+\hypertarget{SW-RS-101}{SW-RS-101} 
+\label{SW-RS-101}
+
+Merge multiple VCD files into one with a separate namespace for each file.
+
+\textbf{Rationale:} 
+
+\textbf{Note:} 
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-RS-100}{SW-RS-100} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-RS-101               & Priority: & 0.0          & Owner: & customers \\
+   Invented on: & 2019-12-15 & Invented by: & default & Status: & not done \\
+   Class: & detailable & Hash: & aef93153
+\end{tabular}\end{center}
+}
+
+\paragraph{Merge-Diff Two Files}
+
+\hypertarget{SW-RS-110}{SW-RS-110} 
+\label{SW-RS-110}
+
+Merge two VCD files with the second as a xor-diff relative to the first
+
+\textbf{Rationale:} Find differences quickly
+
+\textbf{Note:} 
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-RS-1}{SW-RS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-RS-110               & Priority: & 0.0          & Owner: & customers \\
+   Invented on: & 2019-12-15 & Invented by: & default & Status: & not done \\
+   Class: & detailable & Hash: & 81d53eed
+\end{tabular}\end{center}
+}
