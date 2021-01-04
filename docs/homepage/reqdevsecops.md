@@ -9,7 +9,7 @@ Extend *DevOps* with *specifications documents* and automate as much as
 we can.
 
 * Keep the specifications documents and code synchronised
-    * Create close-out references that get invalidated as soon as the requirements change.
+    * Create close-out references[^5] that get invalidated as soon as the requirements change.
 * Automate the generation of documents[^4]
     * Always up-to-date documents
 	* Document versioning is supported with git tags
@@ -77,7 +77,7 @@ A solution is proposed to keep requirements and the other deliverables in
 sync. For this all requirements documents have to be added to the CI/CD 
 pipeline.
 
-Close-out references to requirements, e.g., test specifications, contain a 
+Close-out references[^5] to requirements, e.g., test specifications, contain a 
 reference to the requirement's ID, e.g., `SW-AS-501`. 
 
 To propagate changes in requirements downstream, a hash is calculated over
@@ -95,7 +95,7 @@ title, description and identifier.
 
 ## Close-out Reference
 
-The previous specification item `SW-AS-501` has a close-out reference in the
+The previous specification item `SW-AS-501` has a close-out reference[^5] in the
 unit-tests[^1]. 
 
 ```python
@@ -161,3 +161,4 @@ next run.
 [^2]: [Managing The Development Of Large Software Systems, Dr. Winston W. Royce](http://www-scf.usc.edu/~csci201/lectures/Lecture11/royce1970.pdf)  
 [^3]: [BA Wiki Waterfall](http://www.bawiki.com/wiki/Waterfall.html)
 [^4]: The main point of CI/CD is to unambigouosly document the processes to compile, test and ship software.
+[^5]: *Close-out Reference*: the document, with which we can show that the requirement is fulfilled, e.g., xunit log, verification report, et c. Made-up term apparently.
