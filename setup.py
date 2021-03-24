@@ -8,7 +8,7 @@ project_dir = Path(__file__).parent
 
 setuptools.setup(
     name='pymergevcd',
-    version='0.6',
+    version='0.6.1',
 
     description='Merge various VCD files',
 
