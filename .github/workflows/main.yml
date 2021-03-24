@@ -33,7 +33,7 @@ jobs:
           python -m pip install tox-gh-actions
       - name: Install Documents Dependencies
         if: "contains(env.USING_DOCUMENTS, matrix.python-version)"
-        run: sudo apt-get -y install graphviz gnuplot-nox ghostscript lmodern latexmk texlive texlive-latex-extra texlive-generic-extra texlive-xetex texlive-font-utils texlive-fonts-recommended texlive-fonts-extra
+        run: sudo apt-get -y install graphviz gnuplot-nox ghostscript lmodern latexmk texlive-full
       - name: Run Tests
         run: python -m tox
       - name: Build Homepage
