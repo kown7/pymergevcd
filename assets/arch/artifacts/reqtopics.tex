@@ -1,0 +1,344 @@
+% Output topic 'ReqsDocument'
+
+
+\chapter{Software Design Specification }
+
+This document describes the architecture for the VCD merge software
+
+\paragraph{VCD Merger}
+
+\hypertarget{SW-AS-1}{SW-AS-1} 
+\label{SW-AS-1}
+
+Merge multiple files
+
+
+\textbf{Rationale:} compare files visually
+
+
+
+
+ \textbf{Solved by:}
+ \hyperlink{SW-AS-100}{SW-AS-100}  \hyperlink{SW-AS-101}{SW-AS-101}  \hyperlink{SW-AS-200}{SW-AS-200}  \hyperlink{SW-AS-300}{SW-AS-300}  \hyperlink{SW-AS-400}{SW-AS-400}  \hyperlink{SW-AS-500}{SW-AS-500} 
+
+
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-1               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-03 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & 7d6734f3
+\end{tabular}\end{center}
+}
+
+\paragraph{CLI Input Files}
+
+\hypertarget{SW-AS-100}{SW-AS-100} 
+\label{SW-AS-100}
+
+List the files to be merged on the command line. Treat command-line arguments as files.
+
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-1}{SW-AS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-100               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-03 & Invented by: & default & Status: & open \\
+   Class: & detailable & Hash: & 46fb54ea
+\end{tabular}\end{center}
+}
+
+\paragraph{CLI Output}
+
+\hypertarget{SW-AS-101}{SW-AS-101} 
+\label{SW-AS-101}
+
+Specify the file to write the merged output. Use \texttt{-o <filename>}.
+
+
+
+
+
+ \textbf{Solved by:}
+ \hyperlink{SW-AS-102}{SW-AS-102} 
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-1}{SW-AS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-101               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-03 & Invented by: & default & Status: & open \\
+   Class: & detailable & Hash: & 1427e7d2
+\end{tabular}\end{center}
+}
+
+\paragraph{CLI Output Default Filename}
+
+\hypertarget{SW-AS-102}{SW-AS-102} 
+\label{SW-AS-102}
+
+If no filename is given, use \texttt{out.vcd} as default.
+
+
+\textbf{Rationale:} Sometimes you can’t be bothered.
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-101}{SW-AS-101} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-102               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-03 & Invented by: & default & Status: & open \\
+   Class: & detailable & Hash: & ff72206e
+\end{tabular}\end{center}
+}
+
+\paragraph{VCD Reader RA}
+
+\hypertarget{SW-AS-200}{SW-AS-200} 
+\label{SW-AS-200}
+
+Implements \texttt{AggregatorInterface} interface.
+
+
+
+
+
+ \textbf{Solved by:}
+ \hyperlink{SW-AS-201}{SW-AS-201}  \hyperlink{SW-AS-202}{SW-AS-202} 
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-1}{SW-AS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-200               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & b85e5b1b
+\end{tabular}\end{center}
+}
+
+\paragraph{Reader Elements}
+
+\hypertarget{SW-AS-201}{SW-AS-201} 
+\label{SW-AS-201}
+
+Convert VCD files into a stream of \texttt{VcdElements} objects.
+
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-200}{SW-AS-200} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-201               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & eb13fc0f
+\end{tabular}\end{center}
+}
+
+\paragraph{End-of-File Terminator}
+
+\hypertarget{SW-AS-202}{SW-AS-202} 
+\label{SW-AS-202}
+
+Signal end-of-file with a \texttt{VcdEndOfFile} object.  Treat empty or non-existing files equally.
+
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-200}{SW-AS-200} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-202               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & 35354cd8
+\end{tabular}\end{center}
+}
+
+\paragraph{IO Manager}
+
+\hypertarget{SW-AS-300}{SW-AS-300} 
+\label{SW-AS-300}
+
+Manage data streams from reader to transformation engines.
+
+
+
+
+
+ \textbf{Solved by:}
+ \hyperlink{SW-AS-301}{SW-AS-301}  \hyperlink{SW-AS-302}{SW-AS-302} 
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-1}{SW-AS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-300               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & 7b2b2d9d
+\end{tabular}\end{center}
+}
+
+\paragraph{AggregatorInterface}
+
+\hypertarget{SW-AS-301}{SW-AS-301} 
+\label{SW-AS-301}
+
+Defines \texttt{AggregatorInterface} interface.
+
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-300}{SW-AS-300} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-301               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & open \\
+   Class: & detailable & Hash: & ebf87bab
+\end{tabular}\end{center}
+}
+
+\paragraph{VcdElements}
+
+\hypertarget{SW-AS-302}{SW-AS-302} 
+\label{SW-AS-302}
+
+Defines \texttt{VcdElements} interface.
+
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-300}{SW-AS-300} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-302               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & open \\
+   Class: & detailable & Hash: & f2651770
+\end{tabular}\end{center}
+}
+
+\paragraph{VCD Writer RA}
+
+\hypertarget{SW-AS-500}{SW-AS-500} 
+\label{SW-AS-500}
+
+Write events into one VCD file
+
+
+
+
+
+ \textbf{Solved by:}
+ \hyperlink{SW-AS-501}{SW-AS-501} 
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-1}{SW-AS-1} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-500               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-04 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & 4c1a395a
+\end{tabular}\end{center}
+}
+
+\paragraph{VCD Writer Inputs}
+
+\hypertarget{SW-AS-501}{SW-AS-501} 
+\label{SW-AS-501}
+
+The output from \emph{AggregatorInterface} can be fed into the \emph{VCD Writer} to create an identical output file.
+
+
+\textbf{Rationale:} Make the process as transparent as possible.
+
+
+
+
+
+
+ \textbf{Depends on:}
+ \hyperlink{SW-AS-500}{SW-AS-500} 
+
+
+
+
+\par{\small \begin{center}
+\begin{tabular}{rlrlrl}
+   Id: & SW-AS-501               & Priority: & 0.0          & Owner: & development \\
+   Invented on: & 2020-05-30 & Invented by: & default & Status: & passed \\
+   Class: & detailable & Hash: & f8d68d11
+\end{tabular}\end{center}
+}
