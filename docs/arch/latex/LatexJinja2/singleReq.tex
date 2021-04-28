@@ -1,6 +1,7 @@
 ((* block singleReq *))
 \paragraph{(((name)))}
 
+((* if dependsextLabel is defined *))((* for incoming in dependsextLabel *)) \label{(((incoming)))} ((* endfor *))((* endif *))
 \hypertarget{(((req_id)))}{(((req_id)))} 
 \label{(((req_id)))}
 
@@ -30,7 +31,7 @@
 \begin{tabular}{rlrlrl}
    Id: & (((req_id)))               & Priority: & (((prio)))          & Owner: & (((owner))) \\
    Invented on: & (((inventedon))) & Invented by: & (((inventedby))) & Status: & (((status))) \\
-   Class: & (((clstr))) & Hash: & (((hash)))
+   Class: & (((clstr))) & Hash: & (((hash))) & Depends Ext: & (((dependsext|truncate(24, True))))
 \end{tabular}\end{center}
 }
 ((* endblock singleReq *))

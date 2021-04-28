@@ -7,7 +7,7 @@ def task_rmtoo():
     reqs = [i for i in glob.glob('specifications/**', recursive=True) if os.path.isfile(i)]
     topics = [i for i in glob.glob('topics/**', recursive=True) if os.path.isfile(i)]
     html = [i for i in glob.glob('html/**', recursive=True) if os.path.isfile(i)]
-    deps = ['Config.json', 'artifacts/version.txt']
+    deps = ['Config.json', 'artifacts/version.txt', '../requirements/artifacts/specification.pdf']
     deps.extend(reqs)
     deps.extend(topics)
     deps.extend(html)

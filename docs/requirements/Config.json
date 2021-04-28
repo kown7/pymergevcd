@@ -12,7 +12,8 @@
     },
     "traceability": {
 	"files": {
-	    "UT": ["../rmtoo/result.xml", "xunit"]
+	    "UT": ["../rmtoo/result.xml", "xunit"],
+	    "AS": ["../arch/artifacts/specification.aux", "auxlabel"]
 	}
     },
     "requirements": {
@@ -81,7 +82,7 @@
                     {
                         "template_path": "latex/LatexJinja2/",
                         "output_filename": "artifacts/tracematrix.tex",
-                        "input_files": ["UT"]
+                        "input_files": ["UT", "AS"]
                     }
                 ],
                 "prios": [

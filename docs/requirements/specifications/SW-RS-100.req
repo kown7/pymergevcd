@@ -1,7 +1,7 @@
 Name: Merge Two Files
 Topic: ReqsDocument
 Description: Merge two VCD files into one with a separate namespace for each file.
-Status: not done
+Status: external
 Owner: customers
 Effort estimation: 5
 Invented on: 2019-12-15
